@@ -21,12 +21,15 @@ include $(BUILD_SYSTEM)/sabermod/O3.mk
 # Extra sabermod variables
 include $(BUILD_SYSTEM)/sabermod/extra.mk
 
-# posix thread (pthread) support
-ifneq (1,$(words $(filter $(LOCAL_DISABLE_PTHREAD),$(LOCAL_MODULE))))
-  ifdef LOCAL_CFLAGS
-    LOCAL_CFLAGS += -pthread
-  else
-    LOCAL_CFLAGS := -pthread
+ifeq ($(strip $(ENABLE_PTHREAD)),true)
+
+  # posix thread (pthread) support
+  ifneq (1,$(words $(filter $(LOCAL_DISABLE_PTHREAD),$(LOCAL_MODULE))))
+    ifdef LOCAL_CFLAGS
+      LOCAL_CFLAGS += -pthread
+    else
+      LOCAL_CFLAGS := -pthread
+    endif
   endif
 endif
 
