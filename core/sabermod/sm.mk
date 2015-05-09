@@ -47,10 +47,12 @@ ifeq ($(HOST_OS),linux)
           else
             LOCAL_CFLAGS := $(GRAPHITE_FLAGS)
           endif
-          ifdef LOCAL_LDFLAGS
-            LOCAL_LDFLAGS += $(GRAPHITE_FLAGS)
-          else
-            LOCAL_LDFLAGS := $(GRAPHITE_FLAGS)
+          ifdef EXTRA_SABERMOD_LDLIBS
+            ifdef LOCAL_LDLIBS
+              LOCAL_LDLIBS += $(EXTRA_SABERMOD_LDLIBS)
+            else
+              LOCAL_LDLIBS := $(EXTRA_SABERMOD_LDLIBS)
+            endif
           endif
         endif
       endif

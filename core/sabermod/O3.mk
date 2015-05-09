@@ -42,3 +42,4 @@ ifeq ($(strip $(O3_OPTIMIZATIONS)),true)
 else
   LOCAL_O3_OPTIMIZATIONS_MODE := off
 endif
+
